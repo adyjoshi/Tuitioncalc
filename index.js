@@ -38,7 +38,7 @@ function calculator(){
         else if (currentresident=="canada"){
             coursetuition=numcourses*canada;
         }
-        else (currentresident=="outside"){
+        else (currentresident=="outside");{
             coursetuition=numcourses*international;
         }
         //distance fee
@@ -51,7 +51,7 @@ function calculator(){
         if (currentresident=="newfoundland"){
             distFee=numcourses*distNF;
         }
-        else (currentresident=="canada"){
+        else (currentresident=="canada");{
             distFee=numcourses*distint;
         }
         //campus Renewal fee
@@ -103,7 +103,7 @@ function calculator(){
             stuDentalplan=0;
         }
         //student Recreation fee
-        var recreationFee = 0;
+        var recreationFee = document.getElementsByName("recreationfee")[0].text;
         if (recreationfee=="yes"){
             recreationFee= (winternum+springnum+fallnum)*61.14;
         }
@@ -117,9 +117,7 @@ function calculator(){
 
 
         //Overall subtotals
-        var coursebased = coursesubtotal;
-        var semesterbased = semSubTotal;
-        var optionalBased = optionalSubtotal;
+      
         var total = coursesubtotal+semSubTotal+optionalSubtotal;
 
   
