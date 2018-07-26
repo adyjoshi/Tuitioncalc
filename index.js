@@ -41,6 +41,8 @@ function calculator(){
         else (currentresident=="outside");{
             coursetuition=numcourses*international;
         }
+        //coursetuition.calculator('coursetuition');
+        return coursetuition;
         //distance fee
        
         var distFee=0;
@@ -50,15 +52,19 @@ function calculator(){
        
         if (currentresident=="newfoundland"){
             distFee=numcourses*distNF;
+            return distFee;
         }
         else (currentresident=="canada");{
             distFee=numcourses*distint;
+            return distFee;
         }
         //campus Renewal fee
         var campusrenewal = numcourses*50.00;
+        return campusrenewal;
    
         //subtotal 
         var coursesubtotal = coursetuition+distFee+campusrenewal;
+        return coursesubtotal;
 
         //Semester based Fees
         var winternum=document.getElementsByName('winter')[0].text;
@@ -71,47 +77,61 @@ function calculator(){
         var stuUnion =0;
         if (partTime=="yes"){
             stuUnion=(winternum+springnum+fallnum)*20.23;
+            return stuUnion;
         }
         else {
             stuUnion=(winternum+springnum+fallnum)*47.22;
+            return stuUnion;
         }
         
         //cfosProv and fed fee
         var cfosProv=(winternum*4.57)+(fallnum*4.57);
+        return cfosProv;
         var cfosFed = (winternum*4.57)+(fallnum*4.57);
+        return cfosFed;
         var mediafee=(winternum+springnum+fallnum)*4.00;
+        return mediafee;
+
 
         //subtotal semester based fees
         var semSubTotal = stuServiceFee+stuUnion+cfosProv+cfosFed+mediafee;
-
+        return semSubTotal;
 
         //optional Fees
         //student health plan newfoundland
         var stuHealthPlan = 0;
         if (healthplan=="yes"){
             stuHealthplan= (winternum+springnum+fallnum)*89.00;
+            return stuHealthPlan;
         }
         else {
-            stuHealthplan=0;
+            //stuHealthPlan=0;
+            return stuHealthPlan;
         }
         //student dental plan newfoundland
         var stuDentalPlan = 0;
         if (dentalplan=="yes"){
             stuDentalplan= (winternum+springnum+fallnum)*71.50;
+            return stuDentalPlan;
         }
         else {
-            stuDentalplan=0;
+            //stuDentalplan=0;
+            return stuDentalPlan;
+
         }
         //student Recreation fee
         var recreationFee = document.getElementsByName("recreationfee")[0].text;
         if (recreationfee=="yes"){
             recreationFee= (winternum+springnum+fallnum)*61.14;
+            return recreationFee;
         }
         else {
-            recreationFee=0;
+            //recreationFee=0;
+            return recreationFee;
         }
         //subtotal optional fees
         var optionalSubtotal = stuHealthPlan+stuDentalPlan+recreationFee;
+        return optionalSubtotal;
 
 
 
@@ -119,6 +139,7 @@ function calculator(){
         //Overall subtotals
       
         var total = coursesubtotal+semSubTotal+optionalSubtotal;
+        return total;
 
   
 
