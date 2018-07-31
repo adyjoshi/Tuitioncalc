@@ -2,6 +2,8 @@
 
 <html>
 <head>
+    <!-- You missed importing jQuery, this is needed for not only doing some fun things in javascript, but also for bootstrap to work -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
      <!-- bootstrap cdn-->
      <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -110,34 +112,34 @@
             <form>
             
                 
-                Are you a Part time or Full time student? 
-                <select id="partTime" onchange="calculator()">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
+                Are you a Full time or Part time student? 
+                <select id="studentType" onchange="calculator()">
+                    <option></option>
+                    <option value="fullTime">Full</option>
+                    <option value="partTime">Part</option>
                 </select>
                 <br>
                 How many courses do you need to complete for your degree? 
                 
-                    <input type="number" id="coursenum"><br>
+                    <input type="number" id="courseNum" onchange="calculator()"><br>
                     <!--<input type="submit" value="Submit"><br>-->
                 
                 
                 <br><b>How many semesters do you plan to do to complete the degree</b></br>
                 
-                Winter (Jan - April)
-                
-                    <input type="number" id="winter"><br>
-                   <!-- <input type="submit" value="Submit"><br>-->
-                
-                <br>
-                Spring (May - August)
-                
-                <input type="number" id="spring"><br>
-                
-                <br>
                 Fall (September - December)
                 
-                    <input type="number" id="fall"><br>
+                    <input type="number" id="fall" onchange="calculator()"><br>
+                <br />    
+                Winter (Jan - April)
+                
+                    <input type="number" step="1" id="winter" onchange="calculator()"><br>
+                   <!-- <input type="submit" value="Submit"><br>-->
+                
+                <br />
+                Spring (May - August)
+                
+                <input type="number" step="1" id="spring" onchange="calculator()"><br>
                 
                 <br>
                 <br>
@@ -178,20 +180,13 @@
                 <br>
                 <h3>Course Based Fees</h3>
                 <br>
-                Tuition 
-                <!-- calculation for calculating the fees--> 
-                <script type="text/javascript">
-                    document.write("<p>" + courseTuition()+"</p>");
-                </script>
-
+                Tuition <span id="tuitionTotal">$0.00</span>
                 <br>
-                Distance Education Fee
-                
-                
+                Distance Education Fee <span id="distanceEdTotal">$0.00</span>
                 <br>
-                Campus Renewal Fee
+                Campus Renewal Fee <span id="campusRenewalTotal">$0.00</span>
                 <br>
-                <h3> Subtotal</h3>
+                <h3> Subtotal: <span id="courseSubtotal">$0.00</span></h3>
                 
             
                 <h3>Semester Based Fees</h3>

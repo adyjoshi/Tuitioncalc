@@ -5,66 +5,83 @@
 //function selectCourses(newvalue){
   //  alert("Courses  = " + newvalue);
 //}
-let fullTime = "No";
-let partTime = "Yes";
-let courseNum = 0;
-let winter = 0;
 
-function calculator()
+//Only use lets if they are going to be global, everything else can be var
+
+//Set these up here so easier to update if they ever change.
+let newfoundland=255.00;
+let canada=333.00;
+let international=1146.00;
+let distNF=51.00;
+let distint=102.00;
+
+function _calculator()
 {
-    var pt = document.getElementById("partTime");
-   partTime = pt.options[pt.selectedIndex].text;
-
-   var ft = document.getElementById("partTime"); 
-   fullTime = ft.options[ft.selectedIndex].text;
-
-   courseNum =  document.getElementById("courseNum").value;
-   winter =  document.getElementById("winter").value;
+    //Two functions with same name won't work in javascript
 }
 
 
 //other code calculations
 function calculator(){
-    if (partTime=="yes"){
-//course based fees calculator;
-        var coursetuition=0;
-        var newfoundland=255.00;
-        var canada=333.00;
-        var international=1146.00;
-        var numcourses= document.getElementsByName('coursenum')[0].text;
-        if (currentresident=="newfoundland"){
-            coursetuition=numcourses*newfoundland;
-        }
-        else if (currentresident=="canada"){
-            coursetuition=numcourses*canada;
-        }
-        else (currentresident=="outside");{
-            coursetuition=numcourses*international;
-        }
-        //coursetuition.calculator('coursetuition');
-        return coursetuition;
-        //distance fee
-       
-        var distFee=0;
-        var distNF=51.00;
-        var distint=102.00;
-        
-       
-        if (currentresident=="newfoundland"){
-            distFee=numcourses*distNF;
-            return distFee;
-        }
-        else (currentresident=="canada");{
-            distFee=numcourses*distint;
-            return distFee;
-        }
-        //campus Renewal fee
-        var campusrenewal = numcourses*50.00;
-        return campusrenewal;
+   //Changed how this piece works.  Instead of trying to do this on two variables, use jquery to just get one and calculate from there
+   var studentType = $("#studentType").val();
+   var courseNum = $("#courseNum").val();
+   var currentResident = $("#currentresident").val();
    
-        //subtotal 
-        var coursesubtotal = coursetuition+distFee+campusrenewal;
-        return coursesubtotal;
+   //We need to do some error checking before any calculation can be done.  Once they select the type of student they are (full or part) other fields will need to be completed.
+   //Calling return will kill the function
+   if(courseNum == '') {
+        return;
+   }
+   
+   var winter =  $("#winter").val();
+   var spring =  $("#spring").val();
+   var fall =  $("#fall").val();
+
+   if(winter == '' && spring == '' && fall == '') {
+       return;
+   }
+   
+   //Other variables are pre populated so we won't need to kill the calculation.
+   
+   //Now we are ready to start calculating
+   if (studentType=="partTime"){
+        //course based fees calculator;
+        var courseTuition=0;
+        var distFee=0;
+        
+        //var numcourses= document.getElementsByName('coursenum')[0].text; - Akready know this
+        if (currentResident=="newfoundland"){
+            courseTuition=courseNum*newfoundland;
+        }
+        else if (currentResident=="canada"){
+            courseTuition=courseNum*canada;
+        }
+        else if (currentResident=="outside") {
+            courseTuition=courseNum*international;
+        }
+        
+        //Example of updating a html block using jQuery.  return is going to end the function and do nothing.  You need to do something like this to update the html on the page
+        $("#tuitionTotal").html('$' + courseTuition + '.00');
+        
+        //distance fee
+        if (currentResident=="newfoundland"){
+            distFee=courseNum*distNF;
+        } else {
+            distFee=courseNum*distint;
+        }
+        
+        $("#distanceEdTotal").html('$' + distFee + '.00');
+        
+        //campus Renewal fee
+        var campusRenewal = courseNum*50.00;
+        $("#campusRenewalTotal").html('$' + campusRenewal + '.00');
+        
+        var courseSub = courseTuition+distFee+campusRenewal; 
+        $("#courseSubtotal").html('$' + courseSub + '.00');
+        
+        //Hopefully you can take it from here, use the above code as an example.
+        return;
 
         //Semester based Fees
         var winternum=document.getElementsByName('winter')[0].text;
