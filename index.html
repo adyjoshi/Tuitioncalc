@@ -153,8 +153,8 @@
                 <br>
                 Will you be opting into the Health Plan
                 <select id="healthplan" onchange="calculator()">
-                    <option>Yes</option>
-                    <option>No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                     <!-- This only applies to canada and Newfoundland students, for international students it is different 
                     <br>
                 Will you be opting into the Health Plan
@@ -165,16 +165,16 @@
                 <br>
                 Will you be opting into the Dental Plan
                 <select id="dentalplan" onchange="calculator()">
-                    <option>Yes</option>
-                    <option>No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                     <!-- for international students:  
                     <option>Please Discuss with Internationalization Office</option> -->
                 </select>
                 <br>
                 Will you be opting into the Campus Recreation Fee
                 <select id="recreationfee" onchange="calculator()">
-                    <option>Yes</option>
-                    <option>No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                 </select>
                 
                 <br>
@@ -209,21 +209,21 @@
                 Media Fees <span id="mediaFee">0.00</span>
                 
                 <br>
-                <h3> Subtotal</h3>
+                <h3> Subtotal: <span id="semSubtotal">$0.00</span></h3>
                 
             
                 <h3>Optional Fees</h3>
                 <br>
-                Student Health Plan
+                Student Health Plan <span id="stuHealth">0.00</span>
                 
                 <br>
-                Student Dental Plan
+                Student Dental Plan <span id="stuDental">0.00</span>
                 
                 <br>
-                Recreational Fee
+                Recreational Fee <span id="Recreationfee">0.00</span>
                 
                 <br>
-                <h3> Subtotal</h3>
+                <h3> Subtotal <span id="optionalSubtotal">$0.00</span></h3>
                 
             
                 <table>
@@ -236,7 +236,7 @@
                 </tr>
                 <tr>
                     <td>Course Based Fees</td>
-                    <td></td>
+                    <td><span id="courseSubtotal">$0.00</span></h3></td>
                     
                 </tr>
                 <tr>

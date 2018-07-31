@@ -15,6 +15,14 @@ let international=1146.00;
 let distNF=51.00;
 let distint=102.00;
 let servicesfee = 50.00;
+let stuUnionPart = 20.23;
+let stuUnionFull = 47.22;
+let cfosProv = 4.57;
+let cfosFed =4.57;
+let mediafee = 4.00;
+let studentHealth = 89.00;
+let studentDental = 71.50;
+let studentrecreation = 61.14;
 
 function _calculator()
 {
@@ -59,7 +67,7 @@ function calculator(){
         else if (currentResident=="canada"){
             courseTuition=courseNum*canada;
         }
-        else if (currentResident=="outside") {
+        else if (currentResident=="Outside") {
             courseTuition=courseNum*international;
         }
         
@@ -93,62 +101,64 @@ function calculator(){
         
         //student union
         var stuUnion =0;
-        if (partTime=="yes"){
-            stuUnion=(winter+spring+fall)*20.23;
-            
-            return stuUnion;
+        if (studentType=="Part"){
+            stuUnion=(winter+spring+fall)*stuUnionPart;
         }
         else {
-            stuUnion=(winter+spring+fall)*47.22;
-            return stuUnion;
+            stuUnion=(winter+spring+fall)*stuUnionFull;
         }
         $("#stuUnion").html('$' + stuUnion + '.00');
-        return;
+    
         //cfosProv and fed fee
         var cfosProv=(winter*4.57)+(fall*4.57);
-        return cfosProv;
+        $("#cadProv").html('$' + cfosProv + '.00');
         var cfosFed = (winter*4.57)+(fall*4.57);
-        return cfosFed;
+        $("#cadFed").html('$' + cfosFed + '.00');
+    
+
         var mediafee=(winter+spring+fall)*4.00;
-        return mediafee;
-
-
+        $("#mediaFee").html('$' + mediafee + '.00');
+    
+    
         //subtotal semester based fees
-        var semSubTotal = stuServiceFee+stuUnion+cfosProv+cfosFed+mediafee;
-        return semSubTotal;
+        var semSubTotal = (stuServiceFee+stuUnion+cfosProv+cfosFed+mediafee);
+        $("#semSubtotal").html('$' + semSubTotal + '.00');
+    
 
         //optional Fees
         //student health plan newfoundland
         var stuHealthPlan = 0;
-        if (healthplan=="yes"){
-            stuHealthplan= (winter+spring+fall)*89.00;
-            return stuHealthPlan;
+        if (healthplan=="Yes"){
+            stuHealthplan= (winter+spring+fall)*studentHealth;
         }
-        else {
+        
+
+        //else {
             //stuHealthPlan=0;
-            return stuHealthPlan;
-        }
+          //  stuHealthPlan=0;
+        //}
+        $("#stuHealth").html('$' + stuHealthPlan + '.00');
         //student dental plan newfoundland
         var stuDentalPlan = 0;
-        if (dentalplan=="yes"){
-            stuDentalplan= (winter+spring+fall)*71.50;
-            return stuDentalPlan;
+        if (dentalplan=="Yes"){
+            stuDentalplan= (winter+spring+fall)*studentDental;
         }
         else {
             //stuDentalplan=0;
-            return stuDentalPlan;
-
+            stuDentalPlan=0;
         }
+        $("#stuDental").html('$' + stuDentalPlan + '.00');
+    return;
         //student Recreation fee
         var recreationFee = document.getElementsByName("recreationfee")[0].text;
-        if (recreationfee=="yes"){
-            recreationFee= (winter+spring+fall)*61.14;
-            return recreationFee;
+        if (recreationfee=="Yes"){
+            recreationFee= (winter+spring+fall)*studentrecreation;
         }
         else {
             //recreationFee=0;
-            return recreationFee;
+            recreationFee=0;
         }
+        $("#Recreationalfee").html('$' + recreationFee + '.00');
         //subtotal optional fees
         var optionalSubtotal = stuHealthPlan+stuDentalPlan+recreationFee;
         return optionalSubtotal;
