@@ -89,7 +89,7 @@ function calculator(){
         
         var courseSub = courseTuition+distFee+campusRenewal; 
         $("#courseSubtotal").html('$' + courseSub + '.00');
-        
+        $("#courseSubtotal2").html('$' + courseSub + '.00');
         //Hopefully you can take it from here, use the above code as an example.
         
 
@@ -122,14 +122,15 @@ function calculator(){
     
         //subtotal semester based fees
         var semSubTotal = (stuServiceFee+stuUnion+cfosProv+cfosFed+mediafee);
-        $("#semSubtotal").html('$' + semSubTotal + '.00');
+        $("#semSubtotal").html('$' + semSubTotal.toFixed(2) );
     
 
         //optional Fees
         //student health plan newfoundland
+        var healthplan = $("#healthplan").val();
         var stuHealthPlan = 0;
         if (healthplan=="Yes"){
-            stuHealthplan= (winter+spring+fall)*studentHealth;
+            stuHealthPlan= (winter+spring+fall)*studentHealth;
         }
         
 
@@ -139,26 +140,24 @@ function calculator(){
         //}
         $("#stuHealth").html('$' + stuHealthPlan + '.00');
         //student dental plan newfoundland
+        var dentalplan = $("#dentalplan").val();
         var stuDentalPlan = 0;
         if (dentalplan=="Yes"){
-            stuDentalplan= (winter+spring+fall)*studentDental;
+            stuDentalPlan= (winter+spring+fall)*studentDental;
         }
-        else {
-            //stuDentalplan=0;
-            stuDentalPlan=0;
-        }
+        
         $("#stuDental").html('$' + stuDentalPlan + '.00');
-    return;
+    
         //student Recreation fee
-        var recreationFee = document.getElementsByName("recreationfee")[0].text;
-        if (recreationfee=="Yes"){
-            recreationFee= (winter+spring+fall)*studentrecreation;
+        var studentrecreationfee =0;
+        var recreationFee = $("#recreationfee").val();
+        if (recreationFee=="Yes"){
+            studentrecreationfee= (winter+spring+fall)*studentrecreation;
         }
-        else {
-            //recreationFee=0;
-            recreationFee=0;
-        }
-        $("#Recreationalfee").html('$' + recreationFee + '.00');
+        
+        $("#Recreationfee").html('$' + studentrecreationfee + '.00');
+
+    return;
         //subtotal optional fees
         var optionalSubtotal = stuHealthPlan+stuDentalPlan+recreationFee;
         return optionalSubtotal;
