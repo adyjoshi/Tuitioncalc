@@ -14,6 +14,7 @@ let canada=333.00;
 let international=1146.00;
 let distNF=51.00;
 let distint=102.00;
+let servicesfee = 50.00;
 
 function _calculator()
 {
@@ -34,9 +35,10 @@ function calculator(){
         return;
    }
    
-   var winter =  $("#winter").val();
-   var spring =  $("#spring").val();
-   var fall =  $("#fall").val();
+   var winter =  Number($("#winter").val());
+   var spring =  Number($("#spring").val());
+   var fall =  Number($("#fall").val());
+   
 
    if(winter == '' && spring == '' && fall == '') {
        return;
@@ -81,32 +83,31 @@ function calculator(){
         $("#courseSubtotal").html('$' + courseSub + '.00');
         
         //Hopefully you can take it from here, use the above code as an example.
-        return;
+        
 
-        //Semester based Fees
-        var winternum=document.getElementsByName('winter')[0].text;
-        var springnum=document.getElementsByName('spring')[0].text;
-        var fallnum=document.getElementsByName('fall')[0].text;
+        
         //student service fees *50.00
-        var stuServiceFee = (winternum+springnum+fallnum)*50.00;
-
+        var stuServiceFee = (winter+spring+fall) *servicesfee;
+        $("#stuServicesFee").html('$' + stuServiceFee + '.00');
+        
+        return;
         //student union
         var stuUnion =0;
         if (partTime=="yes"){
-            stuUnion=(winternum+springnum+fallnum)*20.23;
+            stuUnion=(winter+spring+fall)*20.23;
             return stuUnion;
         }
         else {
-            stuUnion=(winternum+springnum+fallnum)*47.22;
+            stuUnion=(winter+spring+fall)*47.22;
             return stuUnion;
         }
         
         //cfosProv and fed fee
-        var cfosProv=(winternum*4.57)+(fallnum*4.57);
+        var cfosProv=(winter*4.57)+(fall*4.57);
         return cfosProv;
-        var cfosFed = (winternum*4.57)+(fallnum*4.57);
+        var cfosFed = (winter*4.57)+(fall*4.57);
         return cfosFed;
-        var mediafee=(winternum+springnum+fallnum)*4.00;
+        var mediafee=(winter+spring+fall)*4.00;
         return mediafee;
 
 
@@ -118,7 +119,7 @@ function calculator(){
         //student health plan newfoundland
         var stuHealthPlan = 0;
         if (healthplan=="yes"){
-            stuHealthplan= (winternum+springnum+fallnum)*89.00;
+            stuHealthplan= (winter+spring+fall)*89.00;
             return stuHealthPlan;
         }
         else {
@@ -128,7 +129,7 @@ function calculator(){
         //student dental plan newfoundland
         var stuDentalPlan = 0;
         if (dentalplan=="yes"){
-            stuDentalplan= (winternum+springnum+fallnum)*71.50;
+            stuDentalplan= (winter+spring+fall)*71.50;
             return stuDentalPlan;
         }
         else {
@@ -139,7 +140,7 @@ function calculator(){
         //student Recreation fee
         var recreationFee = document.getElementsByName("recreationfee")[0].text;
         if (recreationfee=="yes"){
-            recreationFee= (winternum+springnum+fallnum)*61.14;
+            recreationFee= (winter+spring+fall)*61.14;
             return recreationFee;
         }
         else {
