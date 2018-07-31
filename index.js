@@ -90,18 +90,20 @@ function calculator(){
         var stuServiceFee = (winter+spring+fall) *servicesfee;
         $("#stuServicesFee").html('$' + stuServiceFee + '.00');
         
-        return;
+        
         //student union
         var stuUnion =0;
         if (partTime=="yes"){
             stuUnion=(winter+spring+fall)*20.23;
+            
             return stuUnion;
         }
         else {
             stuUnion=(winter+spring+fall)*47.22;
             return stuUnion;
         }
-        
+        $("#stuUnion").html('$' + stuUnion + '.00');
+        return;
         //cfosProv and fed fee
         var cfosProv=(winter*4.57)+(fall*4.57);
         return cfosProv;
