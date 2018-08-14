@@ -114,10 +114,10 @@ function calculator(){
         //cfosProv and fed fee
         var cfosProv= $("#cadProv").val();
         var cfosProv=(winter*4.57)+(fall*4.57);
-        $("#cadProv").html('$' + cfosProv + '.00');
+        $("#cadProv").html('$' + cfosProv );
         var cfosFed= $("#cadFed").val();
         var cfosFed = (winter*4.57)+(fall*4.57);
-        $("#cadFed").html('$' + cfosFed + '.00');
+        $("#cadFed").html('$' + cfosFed );
     
 
         var mediafee= $("#mediaFee").val();
