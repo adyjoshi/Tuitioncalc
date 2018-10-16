@@ -181,7 +181,7 @@ function calculator(){
     return;  
 
     }
-
+//can do both at once but will have to find how, later
 //calculating if fulltime
     if (studentType=="fullTime"){
         //course based fees calculator;
@@ -261,16 +261,7 @@ function calculator(){
         var healthplan = $("#healthplan").val();
         var stuHealthPlan = 0;
         //if healthplan is for outside canada doesnt work!)
-        //
-        //
-        //
-        // REMEMBER TO CHANGE and FIX this
-        //
-        //
-        //
-        //
-        //
-        //
+        
 
         if (healthplan=="Yes"){
             stuHealthPlan= (winter+spring+fall)*studentHealth;
